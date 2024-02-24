@@ -21,18 +21,14 @@ public class PersonasServices {
         return personasRespository.findAll();
     }
 
-
-    public @NonNull Optional<Personas> getPersonaById(Long id) {
-        return personasRespository.findById(id);
-    }
-
     public Personas createPersona(Personas personas) {
+        personas.setId(null);
         personasRespository.save(personas);
         return personas;
     }
 
-    public Personas updatePersona(Long id, Personas personas) {
-        Optional<Personas> existingPersonaOptional = personasRespository.findById(id);
+    public Personas updatePersona(Personas personas) {
+        Optional<Personas> existingPersonaOptional = personasRespository.findById(personas.getId());
 
         if (existingPersonaOptional.isPresent()) {
             Personas existingPersona = existingPersonaOptional.get();

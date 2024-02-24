@@ -5,13 +5,16 @@ import com.autentica.dto.BalancePersonaDTO;
 import com.autentica.dto.DeudaDTO;
 import com.autentica.dto.InfoGastoDTO;
 import com.autentica.service.GastoServices;
+
+import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
+
 
 import java.util.List;
 import java.util.Optional;
 
 
-@Controller("/gastos")
+@Controller("api/gastos")
 public class GastoController {
 
     private GastoServices gastoServices;
@@ -21,10 +24,11 @@ public class GastoController {
     }
 
     @Get("/")
-    public List<Gasto> getAllGastos(){
-        return gastoServices.findAllGastos();
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Gasto> getAllGastos() {
+        List<Gasto> gastos = gastoServices.findAllGastos();
+        return gastos;
     }
-
 
     @Post("/")
     public Gasto crearGasto (@Body Gasto gasto) {
@@ -37,6 +41,7 @@ public class GastoController {
     }
 
     @Get("/balance")
+    @Produces(MediaType.APPLICATION_JSON)
     public List<BalancePersonaDTO>  getBalanceGrupo(@QueryValue Long grupoId) {
         return gastoServices.getBalanceGrupo(grupoId);
     }

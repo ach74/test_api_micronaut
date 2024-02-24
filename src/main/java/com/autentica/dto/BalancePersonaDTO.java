@@ -2,6 +2,7 @@ package com.autentica.dto;
 
 
 import com.autentica.domain.Personas;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.serde.annotation.Serdeable;
 
@@ -12,18 +13,24 @@ import java.util.List;
 @Serdeable
 public class BalancePersonaDTO {
 
+    @JsonProperty("group_Id")
     private Long group_Id;
 
+    @JsonProperty("personaId")
     private Long personaId;
 
+    @JsonProperty("nombre")
     private String nombre;
 
+    @JsonProperty("importeTotalGrupo")
     private BigDecimal importeTotalGrupo;
 
+    @JsonProperty("importeProporcionalPersona")
     private BigDecimal importeProporcionalPersona;
-
+    @JsonProperty("saldoAportado")
     private BigDecimal saldoAportado;
 
+    @JsonProperty("balance")
     private BigDecimal balance;
 
 

@@ -1,6 +1,7 @@
 package com.autentica.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -15,18 +16,23 @@ public class Gasto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "gasto_id")
+    @JsonProperty("gastoId")
     private Long gastoId;
 
     @Column(name = "persona_id", nullable = false)
+    @JsonProperty("personaId")
     private Long personaId;
 
     @Column(name = "importe", nullable = false)
+    @JsonProperty("importe")
     private BigDecimal importe;
 
     @Column(name = "descripcion", nullable = false)
+    @JsonProperty("descripcion")
     private String descripcion;
 
     @Column(name = "fecha_pago", nullable = false)
+    @JsonProperty("fechaPago")
     private LocalDate fechaPago;
 
     public Gasto() {
